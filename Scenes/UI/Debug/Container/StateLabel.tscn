@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkcvhq082u6ag"]
+
+[ext_resource type="Theme" uid="uid://ds6op36catn8q" path="res://Sprites/Debug.theme" id="1_aj3lt"]
+
+[node name="StateLabel" type="Label"]
+theme = ExtResource("1_aj3lt")
+text = "-"
+horizontal_alignment = 1

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ifvb5rp1svdh"]
+
+[ext_resource type="PackedScene" uid="uid://d00br3ieeeb7" path="res://Scenes/Player/Face/Face.scn" id="1_o5lhw"]
+[ext_resource type="Texture2D" uid="uid://cf1f5unbjv7ux" path="res://Sprites/Player/BasicJumpOrbTemp.png" id="2_vvtln"]
+
+[node name="DebugFace" type="Node2D"]
+
+[node name="Face" parent="." instance=ExtResource("1_o5lhw")]
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.247059)
+texture = ExtResource("2_vvtln")
+
+[node name="Camera2D" type="Camera2D" parent="."]
