@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Slime Game"
-run/main_scene="res://Scenes/UI/GameView.scn"
+run/main_scene="res://FaceTool/face_tool.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=800
+window/size/viewport_height=600
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
