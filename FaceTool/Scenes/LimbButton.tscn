@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyyj17isqirf4"]
+
+[ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_nkavx"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolLimbData.cs" id="2_lptew"]
+[ext_resource type="Texture2D" uid="uid://crfp71hw15vh8" path="res://FaceTool/Sprites/LimbGhost/LimbButton.png" id="3_6ivap"]
+[ext_resource type="Texture2D" uid="uid://b5awjy8hq82cx" path="res://FaceTool/Sprites/LimbGhost/LimbButtonPressed.png" id="4_pwtq4"]
+[ext_resource type="Texture2D" uid="uid://bmrtavec6k4ew" path="res://FaceTool/Sprites/LimbGhost/LimbButtonHover.png" id="5_7cu12"]
+
+[node name="LimbButton" type="Control" node_paths=PackedStringArray("button", "ghostButton")]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme = ExtResource("1_nkavx")
+script = ExtResource("2_lptew")
+button = NodePath("AspectRatioContainer/LimbImage")
+ghostButton = NodePath("GhostButton")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme = ExtResource("1_nkavx")
+stretch_mode = 1
+
+[node name="LimbImage" type="Button" parent="AspectRatioContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = ExtResource("1_nkavx")
+
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/LimbImage"]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+theme = ExtResource("1_nkavx")
+expand_mode = 1
+
+[node name="GhostButton" type="TextureButton" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 33.0
+offset_bottom = 75.0
+theme = ExtResource("1_nkavx")
+texture_normal = ExtResource("3_6ivap")
+texture_pressed = ExtResource("4_pwtq4")
+texture_hover = ExtResource("5_7cu12")
+ignore_texture_size = true
+stretch_mode = 0

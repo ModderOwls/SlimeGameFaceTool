@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://4486dncffooj"]
+
+[ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_deky5"]
+[ext_resource type="Texture2D" uid="uid://bv6v3yf3lgmdc" path="res://FaceTool/Sprites/Add.png" id="1_x1pox"]
+
+[node name="AddLimb" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("1_deky5")
+
+[node name="Texture" type="TextureRect" parent="AspectRatioContainer/Button"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+theme = ExtResource("1_deky5")
+texture = ExtResource("1_x1pox")
+expand_mode = 1

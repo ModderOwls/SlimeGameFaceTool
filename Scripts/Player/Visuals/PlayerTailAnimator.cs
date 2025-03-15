@@ -72,6 +72,9 @@ public partial class PlayerTailAnimator : Polygon2D
 
 	public override void _Ready()
 	{
+		SetProcess(false);
+		SetPhysicsProcess(false);
+
 		smoothing = (Node2D)GetParent().GetParent();
 		player = (PlayerController)GetParent().GetParent().GetParent();
 
@@ -83,9 +86,6 @@ public partial class PlayerTailAnimator : Polygon2D
 		bones = new Bone[polyLengthFourth+1];
 		
 		player.tailAnimator = this;
-
-		SetProcess(false);
-		SetPhysicsProcess(false);
 	}
 
     public override void _Draw()
