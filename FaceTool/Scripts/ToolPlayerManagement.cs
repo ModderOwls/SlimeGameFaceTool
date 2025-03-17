@@ -5,7 +5,6 @@ using System;
 public partial class ToolPlayerManagement : Node2D
 {
 	[Export] public PlayerController player;
-	[Export] Control screen;
 
 	string animation;
 
@@ -74,6 +73,8 @@ public partial class ToolPlayerManagement : Node2D
 
 		player.SetPhysicsProcess(true);
 		player.SetProcessUnhandledInput(true);
+
+		player.face.SetEffectDefault();
 	}
 
 	public void StopPlayMode()
@@ -87,11 +88,14 @@ public partial class ToolPlayerManagement : Node2D
 
 	public void PlayAnimation(string name)
 	{
+		//Fix: Player does not support all animations activating in the air atm.
+		if (playing) return;
+
 		DetectSpecialAnimation(name, animation);
 
 		animation = name;
 		
-		//Interrupting animations can mess with the face effects.
+		//Interrupting animations can mess with the face's effects.
 		if (IsPlaying()) player.face.SetEffectDefault();
 
 		player.animator.PlayAnimation(name);

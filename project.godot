@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Slime Game"
-run/main_scene="res://FaceTool/face_tool.tscn"
+run/main_scene="res://FaceTool/FaceTool.tscn"
 config/features=PackedStringArray("4.2", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+FaceFile="*res://FaceTool/Scripts/Files/ToolFaceFile.cs"
 
 [display]
 

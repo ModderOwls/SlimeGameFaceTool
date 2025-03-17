@@ -1,12 +1,13 @@
 using Godot;
 using System;
+using FaceFiles;
 
 //Connects the required variables to the main UI.
 //This way changing the button is easy without having to worry about the layout of this scene.
 public partial class ToolLimbData : Control
 {
 	public int index;
-	public int currentGhostIndex;
+	public GhostType ghost;
 
 	[ExportGroup("limb selection")]
 

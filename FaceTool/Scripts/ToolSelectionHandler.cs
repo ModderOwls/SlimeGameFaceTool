@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 //Uses child indexes instead of separate variables to prevent desyncs, but can be overwritten if need be.
 public partial class ToolSelectionHandler : Control
 {
-	public int current = -1;
+	public virtual int current { get; set;} = -1;
 
 
 	[ExportGroup("Settings")]

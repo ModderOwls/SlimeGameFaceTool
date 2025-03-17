@@ -1,16 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://0ctk6aqu5pg5"]
+[gd_scene load_steps=17 format=3 uid="uid://0ctk6aqu5pg5"]
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_11g28"]
-[ext_resource type="Script" path="res://FaceTool/Scripts/ToolEmotions.cs" id="2_8catt"]
-[ext_resource type="PackedScene" uid="uid://bx8y2ijht4ug8" path="res://FaceTool/Scenes/EmotionButton.tscn" id="3_c4on5"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Selectors/ToolEmotions.cs" id="2_8catt"]
+[ext_resource type="PackedScene" uid="uid://bx8y2ijht4ug8" path="res://FaceTool/Scenes/Buttons/EmotionButton.tscn" id="3_ur5ta"]
 [ext_resource type="Texture2D" uid="uid://d1vfutv11ss4b" path="res://FaceTool/Sprites/Selection/Selector.png" id="4_07qrf"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolSpriteSelection.cs" id="5_ki0cc"]
-[ext_resource type="PackedScene" uid="uid://bxt0gqbv3i6y2" path="res://FaceTool/Scenes/SpriteSelection.tscn" id="6_iguif"]
+[ext_resource type="PackedScene" uid="uid://bxt0gqbv3i6y2" path="res://FaceTool/Scenes/Buttons/SpriteSelection.tscn" id="6_h0ht2"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolOffset.cs" id="6_vxndo"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolBehaviour.cs" id="6_xvc5y"]
 [ext_resource type="Texture2D" uid="uid://dc4t716rbrsjr" path="res://FaceTool/Sprites/Look/LookRight.png" id="7_3mksd"]
 [ext_resource type="Texture2D" uid="uid://b3y1hbuv70aho" path="res://FaceTool/Sprites/Look/Look.png" id="8_v5vsy"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolLimbs.cs" id="9_s2mjt"]
-[ext_resource type="PackedScene" uid="uid://cyyj17isqirf4" path="res://FaceTool/Scenes/LimbButton.tscn" id="10_pha6d"]
-[ext_resource type="PackedScene" uid="uid://4486dncffooj" path="res://FaceTool/Scenes/AddLimb.tscn" id="11_61kj0"]
+[ext_resource type="PackedScene" uid="uid://cyyj17isqirf4" path="res://FaceTool/Scenes/Buttons/LimbButton.tscn" id="10_nuwca"]
+[ext_resource type="PackedScene" uid="uid://4486dncffooj" path="res://FaceTool/Scenes/Buttons/AddLimb.tscn" id="11_h8axe"]
 [ext_resource type="Texture2D" uid="uid://dn0y7yhbsaruv" path="res://FaceTool/Sprites/Buttons/Delete.png" id="12_8felc"]
 [ext_resource type="Texture2D" uid="uid://ddqjcckifrqfu" path="res://FaceTool/Sprites/Selection/LimbSelector.png" id="13_xffdt"]
 
@@ -58,7 +60,7 @@ vertical_scroll_mode = 2
 script = ExtResource("2_8catt")
 selectionParent = NodePath("EmotionList")
 selector = NodePath("../Selector")
-prefab = ExtResource("3_c4on5")
+prefab = ExtResource("3_ur5ta")
 
 [node name="EmotionList" type="VBoxContainer" parent="SideBar/EmotionsScrolling"]
 custom_minimum_size = Vector2(10, 0)
@@ -90,13 +92,16 @@ layout_mode = 2
 focus_mode = 1
 mouse_filter = 1
 
-[node name="Offset" type="VBoxContainer" parent="Content"]
+[node name="Offset" type="VBoxContainer" parent="Content" node_paths=PackedStringArray("spinOffsetX", "spinOffsetY")]
 layout_mode = 1
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 117.0
 offset_bottom = 52.0
 mouse_filter = 2
+script = ExtResource("6_vxndo")
+spinOffsetX = NodePath("OffsetVariables/X")
+spinOffsetY = NodePath("OffsetVariables/Y")
 
 [node name="Label" type="Label" parent="Content/Offset"]
 modulate = Color(0.152941, 0.152941, 0.152941, 1)
@@ -118,6 +123,7 @@ max_value = 1.0
 allow_greater = true
 allow_lesser = true
 alignment = 1
+update_on_text_changed = true
 prefix = "X:"
 
 [node name="Y" type="SpinBox" parent="Content/Offset/OffsetVariables"]
@@ -128,9 +134,10 @@ max_value = 1.0
 allow_greater = true
 allow_lesser = true
 alignment = 1
+update_on_text_changed = true
 prefix = "Y: "
 
-[node name="Behaviour" type="VBoxContainer" parent="Content"]
+[node name="Behaviour" type="VBoxContainer" parent="Content" node_paths=PackedStringArray("optionButton")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -141,6 +148,8 @@ offset_right = -20.0
 offset_bottom = 106.0
 grow_vertical = 0
 mouse_filter = 2
+script = ExtResource("6_xvc5y")
+optionButton = NodePath("Options")
 
 [node name="Label" type="Label" parent="Content/Behaviour"]
 modulate = Color(0.152941, 0.152941, 0.152941, 1)
@@ -163,6 +172,7 @@ popup/item_1/text = "Centered"
 popup/item_1/id = 1
 
 [node name="SpriteSelection" type="Control" parent="Content" node_paths=PackedStringArray("selectionParent", "selector")]
+visible = false
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -174,11 +184,12 @@ offset_right = -20.0
 offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("5_ki0cc")
-startWith = 9
+startWith = 3
 selectionParent = NodePath("Scrolling/Grid")
 selector = NodePath("TextureRect")
-prefab = ExtResource("6_iguif")
+prefab = ExtResource("6_h0ht2")
 
 [node name="IconBar" type="Control" parent="Content/SpriteSelection"]
 layout_mode = 1
@@ -267,9 +278,10 @@ columns = 3
 [node name="TextureRect" type="TextureRect" parent="Content/SpriteSelection"]
 visible = false
 self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
-offset_right = 530.0
-offset_bottom = 260.0
+offset_right = 140.0
+offset_bottom = 140.0
 texture = ExtResource("4_07qrf")
 expand_mode = 1
 
@@ -285,11 +297,10 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("9_s2mjt")
-startWith = 3
 offset = 1
 selectionParent = NodePath("ScrollBar/Limbs")
 selector = NodePath("Selector")
-prefab = ExtResource("10_pha6d")
+prefab = ExtResource("10_nuwca")
 
 [node name="Color" type="ColorRect" parent="Content/LimbOwner"]
 layout_mode = 1
@@ -342,7 +353,7 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="AddLimb" parent="Content/LimbOwner/ScrollBar/Limbs" instance=ExtResource("11_61kj0")]
+[node name="AddLimb" parent="Content/LimbOwner/ScrollBar/Limbs" instance=ExtResource("11_h8axe")]
 layout_mode = 2
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Content/LimbOwner"]
@@ -384,6 +395,9 @@ mouse_filter = 2
 texture = ExtResource("13_xffdt")
 expand_mode = 1
 
+[connection signal="value_changed" from="Content/Offset/OffsetVariables/X" to="Content/Offset" method="SetX"]
+[connection signal="value_changed" from="Content/Offset/OffsetVariables/Y" to="Content/Offset" method="SetY"]
+[connection signal="item_selected" from="Content/Behaviour/Options" to="Content/Behaviour" method="SetBehaviour"]
 [connection signal="pressed" from="Content/LimbOwner/ScrollBar/Limbs/AddLimb/AspectRatioContainer/Button" to="Content/LimbOwner" method="AddPrefab"]
 [connection signal="pressed" from="Content/LimbOwner/AspectRatioContainer/Delete" to="Content/LimbOwner" method="Delete"]
 

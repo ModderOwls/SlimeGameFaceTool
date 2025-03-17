@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyyj17isqirf4"]
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_nkavx"]
-[ext_resource type="Script" path="res://FaceTool/Scripts/ToolLimbData.cs" id="2_lptew"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Data/ToolLimbData.cs" id="2_1ir41"]
 [ext_resource type="Texture2D" uid="uid://crfp71hw15vh8" path="res://FaceTool/Sprites/LimbGhost/LimbButton.png" id="3_6ivap"]
 [ext_resource type="Texture2D" uid="uid://b5awjy8hq82cx" path="res://FaceTool/Sprites/LimbGhost/LimbButtonPressed.png" id="4_pwtq4"]
 [ext_resource type="Texture2D" uid="uid://bmrtavec6k4ew" path="res://FaceTool/Sprites/LimbGhost/LimbButtonHover.png" id="5_7cu12"]
 
-[node name="LimbButton" type="Control" node_paths=PackedStringArray("button", "ghostButton")]
+[node name="LimbButton" type="Control" node_paths=PackedStringArray("button", "textureRect", "ghostButton")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 0
@@ -14,8 +14,9 @@ offset_right = 80.0
 offset_bottom = 80.0
 mouse_filter = 2
 theme = ExtResource("1_nkavx")
-script = ExtResource("2_lptew")
+script = ExtResource("2_1ir41")
 button = NodePath("AspectRatioContainer/LimbImage")
+textureRect = NodePath("AspectRatioContainer/LimbImage/Texture")
 ghostButton = NodePath("GhostButton")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
@@ -31,10 +32,12 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 theme = ExtResource("1_nkavx")
 
-[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/LimbImage"]
+[node name="Texture" type="TextureRect" parent="AspectRatioContainer/LimbImage"]
 layout_mode = 2
-offset_right = 80.0
-offset_bottom = 80.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 76.0
 mouse_filter = 2
 theme = ExtResource("1_nkavx")
 expand_mode = 1

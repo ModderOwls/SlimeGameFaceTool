@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxt0gqbv3i6y2"]
+
+[ext_resource type="Script" path="res://FaceTool/Scripts/Data/SpriteSelectionData.cs" id="1_cuiwo"]
+[ext_resource type="Texture2D" uid="uid://cne84ke1rcf5h" path="res://FaceTool/Sprites/Buttons/SpriteItem.png" id="2_bf7cr"]
+[ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="2_me2hk"]
+
+[node name="SpriteSelection" type="Button" node_paths=PackedStringArray("textureRect")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(140, 140)
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_cuiwo")
+textureRect = NodePath("Texture")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_me2hk")
+expand_mode = 1
+
+[node name="Border" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bf7cr")
+expand_mode = 1

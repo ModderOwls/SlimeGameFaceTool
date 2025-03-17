@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using FaceFiles;
 
 public partial class ToolSpriteView : SubViewportContainer
 {
@@ -10,7 +11,6 @@ public partial class ToolSpriteView : SubViewportContainer
 
 	[Export] SubViewport viewport;
 
-	public readonly static Color[] colorsGhosts = { Colors.Red, Colors.Green, Colors.Blue, Colors.Yellow, Colors.White, Colors.Black };
 	bool ghostsEnabled;
 
     public override void _Draw()
@@ -22,7 +22,7 @@ public partial class ToolSpriteView : SubViewportContainer
 		{
 			for (int i = 0; i < management.player.face.playerGhosts.Length; ++i)
 			{
-				Color color = colorsGhosts[i];
+				Color color = ToolFaceFile.colorsGhosts[i];
 				color.A = 0.7f;
 
 				DrawCircle

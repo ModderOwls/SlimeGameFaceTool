@@ -13,6 +13,7 @@ public partial class ToolAnimationSlide : HSplitContainer
 		}
 	}
 
+
 	[ExportGroup("Player Management")]
 
 	[Export] ToolPlayerManagement playerManagement;

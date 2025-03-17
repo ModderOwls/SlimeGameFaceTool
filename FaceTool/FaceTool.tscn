@@ -1,0 +1,360 @@
+[gd_scene load_steps=15 format=3 uid="uid://5g1jpk5ofm5m"]
+
+[ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_f7vwn"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolFaces.cs" id="2_tvx7b"]
+[ext_resource type="Texture2D" uid="uid://cs01jkqfhtpfr" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNext.png" id="4_50qf4"]
+[ext_resource type="Texture2D" uid="uid://hhait8tvlbkd" path="res://FaceTool/Sprites/Selection/SelectorBackground.png" id="4_e4avi"]
+[ext_resource type="Texture2D" uid="uid://cciiady52w7ts" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNextSelected.png" id="4_sujk4"]
+[ext_resource type="Texture2D" uid="uid://dafr5opwcf25d" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNextHover.png" id="5_m3vx3"]
+[ext_resource type="Texture2D" uid="uid://b8ax4rsx5qt26" path="res://FaceTool/Sprites/Buttons/StartMenu/New.png" id="5_nbofk"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolSlideHandler.cs" id="5_wkn57"]
+[ext_resource type="Texture2D" uid="uid://c3iqw34thmght" path="res://FaceTool/Sprites/Buttons/StartMenu/Save.png" id="6_gucja"]
+[ext_resource type="Script" path="res://FaceTool/ToolSetName.cs" id="6_sy4so"]
+[ext_resource type="PackedScene" uid="uid://0ctk6aqu5pg5" path="res://FaceTool/Scenes/Slides/SlideFace.tscn" id="6_ux0nh"]
+[ext_resource type="PackedScene" uid="uid://d2s5p52dq28au" path="res://FaceTool/Scenes/Slides/SlideAnimation.tscn" id="7_7vfth"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp47s"]
+texture = ExtResource("4_e4avi")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dskd6"]
+
+[node name="FaceTool" type="Control" node_paths=PackedStringArray("slideHandler")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+script = ExtResource("2_tvx7b")
+slideHandler = NodePath("Slides")
+
+[node name="Color" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+color = Color(0.94902, 0.94902, 0.92549, 1)
+
+[node name="Slides" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_wkn57")
+
+[node name="SlideStart" type="Control" parent="Slides"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="Slides/SlideStart"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.811765, 1)
+
+[node name="Label" type="Label" parent="Slides/SlideStart"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.5
+offset_top = 110.0
+offset_right = 220.5
+offset_bottom = 165.0
+grow_horizontal = 2
+theme = ExtResource("1_f7vwn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "GELACTIC FACE EDITOR"
+
+[node name="NewFile" type="Control" parent="Slides/SlideStart"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -80.0
+offset_right = -10.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 0)
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Slides/SlideStart/NewFile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+ratio = 2.5
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Slides/SlideStart/NewFile/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("1_f7vwn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="Slides/SlideStart/NewFile/AspectRatioContainer/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7vwn")
+texture = ExtResource("5_nbofk")
+expand_mode = 1
+
+[node name="SaveFile" type="Control" parent="Slides/SlideStart"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -80.0
+offset_right = 310.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 0)
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Slides/SlideStart/SaveFile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+ratio = 2.5
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Slides/SlideStart/SaveFile/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("1_f7vwn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="Slides/SlideStart/SaveFile/AspectRatioContainer/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7vwn")
+texture = ExtResource("6_gucja")
+expand_mode = 1
+
+[node name="LoadFile" type="Control" parent="Slides/SlideStart"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 60.0
+offset_right = 150.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 0)
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Slides/SlideStart/LoadFile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+ratio = 2.5
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Slides/SlideStart/LoadFile/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("1_f7vwn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="Slides/SlideStart/LoadFile/AspectRatioContainer/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7vwn")
+texture = ExtResource("6_gucja")
+expand_mode = 1
+
+[node name="SlideFace" parent="Slides" instance=ExtResource("6_ux0nh")]
+visible = false
+layout_mode = 1
+
+[node name="SlideAnimation" parent="Slides" instance=ExtResource("7_7vfth")]
+visible = false
+layout_mode = 1
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+focus_mode = 1
+theme = ExtResource("1_f7vwn")
+
+[node name="Color" type="ColorRect" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.811765, 1)
+
+[node name="Seperator" type="ColorRect" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+color = Color(0.823529, 0.784314, 0.129412, 1)
+
+[node name="Previous" type="TextureButton" parent="TopBar"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -30.0
+offset_right = 110.0
+offset_bottom = 70.0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+theme = ExtResource("1_f7vwn")
+texture_normal = ExtResource("4_50qf4")
+texture_pressed = ExtResource("4_sujk4")
+texture_hover = ExtResource("5_m3vx3")
+stretch_mode = 0
+flip_h = true
+
+[node name="LineEdit" type="LineEdit" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = -29.0
+offset_right = -100.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7vwn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.196078, 0.196078, 0.196078, 0.784314)
+theme_override_colors/caret_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dskd6")
+placeholder_text = "(Click to add a file name)"
+alignment = 1
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+caret_blink = true
+caret_blink_interval = 0.6
+script = ExtResource("6_sy4so")
+
+[node name="Next" type="TextureButton" parent="TopBar"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -30.0
+offset_right = -14.0
+offset_bottom = 66.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(100, 0)
+theme = ExtResource("1_f7vwn")
+texture_normal = ExtResource("4_50qf4")
+texture_pressed = ExtResource("4_sujk4")
+texture_hover = ExtResource("5_m3vx3")
+stretch_mode = 0
+
+[connection signal="pressed" from="Slides/SlideStart/NewFile/AspectRatioContainer/Button" to="." method="NewFile"]
+[connection signal="pressed" from="Slides/SlideStart/SaveFile/AspectRatioContainer/Button" to="." method="SaveFile"]
+[connection signal="pressed" from="Slides/SlideStart/LoadFile/AspectRatioContainer/Button" to="." method="LoadFile"]
+[connection signal="pressed" from="TopBar/Previous" to="." method="PreviousSlide"]
+[connection signal="pressed" from="TopBar/Next" to="." method="NextSlide"]

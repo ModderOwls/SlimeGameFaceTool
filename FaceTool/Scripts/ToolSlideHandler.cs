@@ -1,7 +1,8 @@
 using Godot;
 using System;
 
-public partial class SlideHandler : Control
+
+public partial class ToolSlideHandler : Control
 {
 	[Export] int current;
 	
@@ -14,7 +15,7 @@ public partial class SlideHandler : Control
 
 	public void PreviousSlide()
 	{
-		current = (current - 1) % GetChildCount();
+		current = (current - 2) % GetChildCount() + 1; 
 
 		UpdateSlides();
 	}
