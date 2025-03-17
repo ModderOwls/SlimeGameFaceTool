@@ -1,0 +1,342 @@
+[gd_scene load_steps=20 format=3 uid="uid://d2s5p52dq28au"]
+
+[ext_resource type="Script" path="res://FaceTool/ToolAnimationSlide.cs" id="1_g0lhi"]
+[ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="2_pi0p7"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolGetAllAnimations.cs" id="3_0tkq6"]
+[ext_resource type="Script" path="res://FaceTool/ToolSpriteView.cs" id="4_jn7bq"]
+[ext_resource type="PackedScene" uid="uid://jddo3p623drh" path="res://FaceTool/Scenes/PlayerScene.tscn" id="5_woj7h"]
+[ext_resource type="Texture2D" uid="uid://hhait8tvlbkd" path="res://FaceTool/Sprites/Selection/SelectorBackground.png" id="6_2cv4n"]
+[ext_resource type="Texture2D" uid="uid://dyjommprqlhg4" path="res://FaceTool/Sprites/Buttons/Play.png" id="7_85q42"]
+[ext_resource type="Texture2D" uid="uid://73q00wc60pg0" path="res://FaceTool/Sprites/Buttons/TimelineGrabber.png" id="8_y8ka3"]
+[ext_resource type="Texture2D" uid="uid://cgxub0xsptvw3" path="res://FaceTool/Sprites/Buttons/TimelineGrabberSelected.png" id="9_p622k"]
+[ext_resource type="Texture2D" uid="uid://up67jnv5mpdl" path="res://FaceTool/Sprites/Buttons/TimelineTicker.png" id="10_6n3t6"]
+[ext_resource type="Script" path="res://FaceTool/ToolAnimationTimeline.cs" id="11_m08t3"]
+[ext_resource type="Texture2D" uid="uid://cm4s1tlx1vwjt" path="res://FaceTool/Sprites/Buttons/PlayNPause.png" id="12_exywf"]
+[ext_resource type="Texture2D" uid="uid://0f6ocmdf277b" path="res://FaceTool/Sprites/Buttons/Ghost.png" id="13_1vxmx"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ad5e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_815ix"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3doa1"]
+texture = ExtResource("6_2cv4n")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gsauk"]
+color = Color(0.141176, 0.141176, 0.141176, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3so7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qxg6b"]
+
+[node name="SlideAnimation" type="HSplitContainer" node_paths=PackedStringArray("playerManagement", "spriteView", "animationTimeline")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+theme_override_icons/grabber = SubResource("CompressedTexture2D_6ad5e")
+split_offset = 240
+script = ExtResource("1_g0lhi")
+playerManagement = NodePath("Content/SpriteView/SubViewport/PlayerScene")
+spriteView = NodePath("Content/SpriteView")
+animationTimeline = NodePath("Content/AnimationTab/TimeLine")
+
+[node name="SideBar" type="Control" parent="."]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 2
+
+[node name="Color" type="ColorRect" parent="SideBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.811765, 1)
+
+[node name="Tree" type="Tree" parent="SideBar" node_paths=PackedStringArray("AnimatorNode")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pi0p7")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_815ix")
+allow_reselect = true
+hide_root = true
+script = ExtResource("3_0tkq6")
+AnimatorNode = NodePath("../..")
+
+[node name="Content" type="Control" parent="."]
+clip_contents = true
+layout_mode = 2
+focus_mode = 1
+mouse_filter = 1
+
+[node name="SpriteView" type="SubViewportContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.33333, 3.33333)
+pivot_offset = Vector2(72, 72)
+script = ExtResource("4_jn7bq")
+defaultSize = 5.0
+viewSize = Vector2(96, 96)
+
+[node name="SubViewport" type="SubViewport" parent="Content/SpriteView"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(144, 144)
+render_target_update_mode = 4
+
+[node name="PlayerScene" parent="Content/SpriteView/SubViewport" instance=ExtResource("5_woj7h")]
+
+[node name="ViewSize" type="Control" parent="Content"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 30.0
+theme = ExtResource("2_pi0p7")
+
+[node name="Slider" type="HSlider" parent="Content/ViewSize"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pi0p7")
+min_value = 1.0
+max_value = 4.0
+step = 0.5
+value = 1.5
+
+[node name="PlayButton" type="Control" parent="Content"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 10.0
+offset_right = -19.9999
+offset_bottom = 90.0
+grow_horizontal = 0
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Content/PlayButton"]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Content/PlayButton/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("2_pi0p7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3doa1")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="Content/PlayButton/AspectRatioContainer/Button"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+theme = ExtResource("2_pi0p7")
+texture = ExtResource("7_85q42")
+expand_mode = 1
+
+[node name="AnimationTab" type="Control" parent="Content"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Color" type="ColorRect" parent="Content/AnimationTab"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.921569, 0.921569, 0.87451, 1)
+
+[node name="TimeLine" type="HSlider" parent="Content/AnimationTab"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -23.5
+offset_right = -120.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pi0p7")
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("8_y8ka3")
+theme_override_icons/grabber_highlight = ExtResource("9_p622k")
+theme_override_icons/tick = ExtResource("10_6n3t6")
+theme_override_styles/slider = SubResource("StyleBoxLine_gsauk")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_x3so7")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_qxg6b")
+max_value = 1.0
+step = 0.0
+tick_count = 5
+ticks_on_borders = true
+script = ExtResource("11_m08t3")
+
+[node name="BorderL" type="TextureRect" parent="Content/AnimationTab/TimeLine"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 15.0
+offset_right = 1.0
+offset_bottom = 33.0
+texture = ExtResource("10_6n3t6")
+
+[node name="BorderR" type="TextureRect" parent="Content/AnimationTab/TimeLine"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -9.0
+offset_right = 1.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("10_6n3t6")
+
+[node name="Label" type="Label" parent="Content/AnimationTab/TimeLine"]
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = -45.0
+offset_right = 123.0
+offset_bottom = -9.0
+grow_horizontal = 2
+pivot_offset = Vector2(64, 0)
+theme = ExtResource("2_pi0p7")
+text = "Animation Timeline"
+horizontal_alignment = 1
+
+[node name="Pause" type="Control" parent="Content/AnimationTab/TimeLine"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -8.0
+offset_right = 20.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Content/AnimationTab/TimeLine/Pause"]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Content/AnimationTab/TimeLine/Pause/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("2_pi0p7")
+
+[node name="Texture" type="TextureRect" parent="Content/AnimationTab/TimeLine/Pause/AspectRatioContainer/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("2_pi0p7")
+texture = ExtResource("12_exywf")
+expand_mode = 1
+
+[node name="GhostToggler" type="Control" parent="Content/AnimationTab"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Content/AnimationTab/GhostToggler"]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 80.0
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Content/AnimationTab/GhostToggler/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("2_pi0p7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3doa1")
+toggle_mode = true
+
+[node name="Texture" type="TextureRect" parent="Content/AnimationTab/GhostToggler/AspectRatioContainer/Button"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+theme = ExtResource("2_pi0p7")
+texture = ExtResource("13_1vxmx")
+expand_mode = 1
+
+[connection signal="PlayAnimation" from="SideBar/Tree" to="." method="PlayAnimation"]
+[connection signal="cell_selected" from="SideBar/Tree" to="SideBar/Tree" method="PressedItem"]
+[connection signal="value_changed" from="Content/ViewSize/Slider" to="Content/SpriteView" method="SetSize"]
+[connection signal="toggled" from="Content/PlayButton/AspectRatioContainer/Button" to="." method="TogglePlayMode"]
+[connection signal="value_changed" from="Content/AnimationTab/TimeLine" to="." method="SetAnimationTimeNormalized"]
+[connection signal="pressed" from="Content/AnimationTab/TimeLine/Pause/AspectRatioContainer/Button" to="." method="PressAnimationPause"]
+[connection signal="toggled" from="Content/AnimationTab/GhostToggler/AspectRatioContainer/Button" to="." method="ToggleGhost"]

@@ -6,6 +6,8 @@ using System.Linq;
 
 public partial class ToolGetAllAnimations : Tree
 {
+    [Export] Node AnimatorNode;
+
     [Export(PropertyHint.Dir)] string rootPath = "res://Animations/Player/";
 	[Export] string fileExtension = ".anim";
 
@@ -61,4 +63,16 @@ public partial class ToolGetAllAnimations : Tree
 			fileName = dir.GetNext();
         }
     }
+
+    public void PressedItem()
+    {
+        TreeItem selected = GetSelected();
+
+        if (selected.GetChildCount() != 0) return;
+        
+        EmitSignal("PlayAnimation", selected.GetText(GetSelectedColumn()));
+    }
+
+    [Signal]
+    public delegate void PlayAnimationEventHandler(string name);
 }

@@ -7,6 +7,6 @@ public partial class ToolSpriteSelection : ToolSelectionHandler
     {
         base.Select(node);
 
-		selector.Size = node.Size;
+		//selector.Size = node.Size;
     }
 }

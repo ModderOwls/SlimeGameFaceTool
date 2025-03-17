@@ -148,9 +148,27 @@ public partial class PlayerAnimator : Node
 	public void PlayAnimation(string name)
 	{
 		animator.Stop();
-		
+
 		animator.Play(name);
 
 		//GD.Print("Playing: " + name);
     }
+
+	public void SetAnimationTime(string animation, float time)
+	{
+		animator.Seek(time, false);
+	}
+
+	public void SetAnimationTimeNormalized(string animation, double normalizedTime)
+	{
+		double realTime = 0;
+
+		if (normalizedTime != 0)
+		{
+			realTime = animator.CurrentAnimationLength * normalizedTime;
+		}
+
+		animator.Play(animation);
+		animator.Seek(realTime);
+	}
 }

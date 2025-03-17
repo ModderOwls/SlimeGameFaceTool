@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_11g28"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolEmotions.cs" id="2_8catt"]
 [ext_resource type="PackedScene" uid="uid://bx8y2ijht4ug8" path="res://FaceTool/Scenes/EmotionButton.tscn" id="3_c4on5"]
-[ext_resource type="Texture2D" uid="uid://d1vfutv11ss4b" path="res://FaceTool/Sprites/SpriteItemSelector.png" id="4_07qrf"]
+[ext_resource type="Texture2D" uid="uid://d1vfutv11ss4b" path="res://FaceTool/Sprites/Selection/Selector.png" id="4_07qrf"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolSpriteSelection.cs" id="5_ki0cc"]
 [ext_resource type="PackedScene" uid="uid://bxt0gqbv3i6y2" path="res://FaceTool/Scenes/SpriteSelection.tscn" id="6_iguif"]
 [ext_resource type="Texture2D" uid="uid://dc4t716rbrsjr" path="res://FaceTool/Sprites/Look/LookRight.png" id="7_3mksd"]
@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolLimbs.cs" id="9_s2mjt"]
 [ext_resource type="PackedScene" uid="uid://cyyj17isqirf4" path="res://FaceTool/Scenes/LimbButton.tscn" id="10_pha6d"]
 [ext_resource type="PackedScene" uid="uid://4486dncffooj" path="res://FaceTool/Scenes/AddLimb.tscn" id="11_61kj0"]
-[ext_resource type="Texture2D" uid="uid://dn0y7yhbsaruv" path="res://FaceTool/Sprites/Delete.png" id="12_8felc"]
-[ext_resource type="Texture2D" uid="uid://ddqjcckifrqfu" path="res://FaceTool/Sprites/LimbSelector.png" id="13_xffdt"]
+[ext_resource type="Texture2D" uid="uid://dn0y7yhbsaruv" path="res://FaceTool/Sprites/Buttons/Delete.png" id="12_8felc"]
+[ext_resource type="Texture2D" uid="uid://ddqjcckifrqfu" path="res://FaceTool/Sprites/Selection/LimbSelector.png" id="13_xffdt"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4buiq"]
 
@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0.811765, 1)
 
-[node name="EmotionsScrolling" type="ScrollContainer" parent="SideBar"]
+[node name="EmotionsScrolling" type="ScrollContainer" parent="SideBar" node_paths=PackedStringArray("selectionParent", "selector")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +56,8 @@ theme = ExtResource("1_11g28")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 script = ExtResource("2_8catt")
+selectionParent = NodePath("EmotionList")
+selector = NodePath("../Selector")
 prefab = ExtResource("3_c4on5")
 
 [node name="EmotionList" type="VBoxContainer" parent="SideBar/EmotionsScrolling"]
@@ -160,7 +162,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Centered"
 popup/item_1/id = 1
 
-[node name="SpriteSelection" type="Control" parent="Content"]
+[node name="SpriteSelection" type="Control" parent="Content" node_paths=PackedStringArray("selectionParent", "selector")]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -174,6 +176,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_ki0cc")
 startWith = 9
+selectionParent = NodePath("Scrolling/Grid")
+selector = NodePath("TextureRect")
 prefab = ExtResource("6_iguif")
 
 [node name="IconBar" type="Control" parent="Content/SpriteSelection"]
@@ -269,7 +273,7 @@ offset_bottom = 260.0
 texture = ExtResource("4_07qrf")
 expand_mode = 1
 
-[node name="LimbOwner" type="Control" parent="Content"]
+[node name="LimbOwner" type="Control" parent="Content" node_paths=PackedStringArray("selectionParent", "selector")]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 12
@@ -281,7 +285,10 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("9_s2mjt")
+startWith = 3
 offset = 1
+selectionParent = NodePath("ScrollBar/Limbs")
+selector = NodePath("Selector")
 prefab = ExtResource("10_pha6d")
 
 [node name="Color" type="ColorRect" parent="Content/LimbOwner"]

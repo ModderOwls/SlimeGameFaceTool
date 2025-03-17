@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwdanvknrurl5"
-path="res://.godot/imported/Home.png-442b277df6070cfa2fce7550b408787a.ctex"
+uid="uid://hhait8tvlbkd"
+path="res://.godot/imported/SelectorBackground.png-2420f507ab30cdc97c87e5fb450d903e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/Home.png"
-dest_files=["res://.godot/imported/Home.png-442b277df6070cfa2fce7550b408787a.ctex"]
+source_file="res://FaceTool/Sprites/Selection/SelectorBackground.png"
+dest_files=["res://.godot/imported/SelectorBackground.png-2420f507ab30cdc97c87e5fb450d903e.ctex"]
 
 [params]
 

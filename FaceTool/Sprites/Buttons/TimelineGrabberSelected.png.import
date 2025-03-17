@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs01jkqfhtpfr"
-path="res://.godot/imported/ArrowNext.png-f88625b96a6fbd3db8b5974f4b06a5e0.ctex"
+uid="uid://cgxub0xsptvw3"
+path="res://.godot/imported/TimelineGrabberSelected.png-57bbd492556fe991bd4b279b29f32685.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/ArrowNext.png"
-dest_files=["res://.godot/imported/ArrowNext.png-f88625b96a6fbd3db8b5974f4b06a5e0.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/TimelineGrabberSelected.png"
+dest_files=["res://.godot/imported/TimelineGrabberSelected.png-57bbd492556fe991bd4b279b29f32685.ctex"]
 
 [params]
 

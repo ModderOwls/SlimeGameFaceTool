@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddqjcckifrqfu"
-path="res://.godot/imported/LimbSelector.png-3e0e08374ff9cf0188247f1afada712f.ctex"
+uid="uid://cs01jkqfhtpfr"
+path="res://.godot/imported/ArrowNext.png-1edbe6c34ecf30b47bb915a943cac9a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/LimbSelector.png"
-dest_files=["res://.godot/imported/LimbSelector.png-3e0e08374ff9cf0188247f1afada712f.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/ArrowNext.png"
+dest_files=["res://.godot/imported/ArrowNext.png-1edbe6c34ecf30b47bb915a943cac9a3.ctex"]
 
 [params]
 

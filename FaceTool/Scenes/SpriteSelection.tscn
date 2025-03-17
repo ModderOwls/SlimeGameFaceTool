@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxt0gqbv3i6y2"]
 
 [ext_resource type="Script" path="res://FaceTool/Scripts/ConnectToButton.cs" id="1_dh3fu"]
-[ext_resource type="Texture2D" uid="uid://cne84ke1rcf5h" path="res://FaceTool/Sprites/SpriteItem.png" id="1_ha6tk"]
+[ext_resource type="Texture2D" uid="uid://cne84ke1rcf5h" path="res://FaceTool/Sprites/Buttons/SpriteItem.png" id="1_ha6tk"]
 
 [node name="SpriteSelection" type="Button"]
 self_modulate = Color(1, 1, 1, 0)

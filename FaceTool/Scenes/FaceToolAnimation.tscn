@@ -2,8 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_1tosi"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolFaces.cs" id="2_lke1w"]
-[ext_resource type="Script" path="res://FaceTool/Scenes/ToolGetAllAnimations.cs" id="5_b6fg1"]
-[ext_resource type="Texture2D" uid="uid://d1vfutv11ss4b" path="res://FaceTool/Sprites/SpriteItemSelector.png" id="7_k64jq"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/ToolGetAllAnimations.cs" id="5_b6fg1"]
+[ext_resource type="Texture2D" uid="uid://d1vfutv11ss4b" path="res://FaceTool/Sprites/Selection/Selector.png" id="7_k64jq"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolSpriteSelection.cs" id="8_mbmes"]
 [ext_resource type="PackedScene" uid="uid://bxt0gqbv3i6y2" path="res://FaceTool/Scenes/SpriteSelection.tscn" id="9_dcsme"]
 [ext_resource type="Texture2D" uid="uid://dc4t716rbrsjr" path="res://FaceTool/Sprites/Look/LookRight.png" id="10_mpygb"]
@@ -11,10 +11,10 @@
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolLimbs.cs" id="12_fmaiq"]
 [ext_resource type="PackedScene" uid="uid://cyyj17isqirf4" path="res://FaceTool/Scenes/LimbButton.tscn" id="13_tl4vf"]
 [ext_resource type="PackedScene" uid="uid://4486dncffooj" path="res://FaceTool/Scenes/AddLimb.tscn" id="14_p3g5n"]
-[ext_resource type="Texture2D" uid="uid://dn0y7yhbsaruv" path="res://FaceTool/Sprites/Delete.png" id="15_7aq82"]
-[ext_resource type="Texture2D" uid="uid://cwdanvknrurl5" path="res://FaceTool/Sprites/Home.png" id="15_xfed3"]
-[ext_resource type="Texture2D" uid="uid://ddqjcckifrqfu" path="res://FaceTool/Sprites/LimbSelector.png" id="16_5s17l"]
-[ext_resource type="Texture2D" uid="uid://cs01jkqfhtpfr" path="res://FaceTool/Sprites/ArrowNext.png" id="16_ajgt8"]
+[ext_resource type="Texture2D" uid="uid://dn0y7yhbsaruv" path="res://FaceTool/Sprites/Buttons/Delete.png" id="15_7aq82"]
+[ext_resource type="Texture2D" uid="uid://cwdanvknrurl5" path="res://FaceTool/Sprites/Buttons/Home.png" id="15_xfed3"]
+[ext_resource type="Texture2D" uid="uid://ddqjcckifrqfu" path="res://FaceTool/Sprites/Selection/LimbSelector.png" id="16_5s17l"]
+[ext_resource type="Texture2D" uid="uid://cs01jkqfhtpfr" path="res://FaceTool/Sprites/Buttons/ArrowNext.png" id="16_ajgt8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4buiq"]
 

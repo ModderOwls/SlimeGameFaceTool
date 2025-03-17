@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn0y7yhbsaruv"
-path="res://.godot/imported/Delete.png-9c3cf676d87095d8f6e2b75de83248ce.ctex"
+uid="uid://cne84ke1rcf5h"
+path="res://.godot/imported/SpriteItem.png-f5d2a04175b8c76792d9ca718c3ffb82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/Delete.png"
-dest_files=["res://.godot/imported/Delete.png-9c3cf676d87095d8f6e2b75de83248ce.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/SpriteItem.png"
+dest_files=["res://.godot/imported/SpriteItem.png-f5d2a04175b8c76792d9ca718c3ffb82.ctex"]
 
 [params]
 

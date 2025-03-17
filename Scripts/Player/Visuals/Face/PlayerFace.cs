@@ -225,6 +225,8 @@ public partial class PlayerFace : Node2D
 	{
 		int signDirection = -Mathf.Sign(lookDirection.X);
 
+		//if (playerGhosts.Length != 0) return;
+
 		for (int i = 0; i < playerGhosts.Length; ++i)
 		{
 			playerGhosts[i].Position = new Vector2(followGhostPositions[i].X * signDirection, followGhostPositions[i].Y);
