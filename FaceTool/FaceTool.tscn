@@ -1,17 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://5g1jpk5ofm5m"]
+[gd_scene load_steps=17 format=3 uid="uid://5g1jpk5ofm5m"]
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_f7vwn"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolFaces.cs" id="2_tvx7b"]
 [ext_resource type="Texture2D" uid="uid://cs01jkqfhtpfr" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNext.png" id="4_50qf4"]
 [ext_resource type="Texture2D" uid="uid://hhait8tvlbkd" path="res://FaceTool/Sprites/Selection/SelectorBackground.png" id="4_e4avi"]
-[ext_resource type="Texture2D" uid="uid://cciiady52w7ts" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNextSelected.png" id="4_sujk4"]
-[ext_resource type="Texture2D" uid="uid://dafr5opwcf25d" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNextHover.png" id="5_m3vx3"]
 [ext_resource type="Texture2D" uid="uid://b8ax4rsx5qt26" path="res://FaceTool/Sprites/Buttons/StartMenu/New.png" id="5_nbofk"]
 [ext_resource type="Script" path="res://FaceTool/Scripts/ToolSlideHandler.cs" id="5_wkn57"]
 [ext_resource type="Texture2D" uid="uid://c3iqw34thmght" path="res://FaceTool/Sprites/Buttons/StartMenu/Save.png" id="6_gucja"]
+[ext_resource type="Texture2D" uid="uid://bqc7e4aub66ih" path="res://FaceTool/Sprites/Buttons/StartMenu/Load.png" id="6_polen"]
 [ext_resource type="Script" path="res://FaceTool/ToolSetName.cs" id="6_sy4so"]
 [ext_resource type="PackedScene" uid="uid://0ctk6aqu5pg5" path="res://FaceTool/Scenes/Slides/SlideFace.tscn" id="6_ux0nh"]
 [ext_resource type="PackedScene" uid="uid://d2s5p52dq28au" path="res://FaceTool/Scenes/Slides/SlideAnimation.tscn" id="7_7vfth"]
+[ext_resource type="Texture2D" uid="uid://cm4s1tlx1vwjt" path="res://FaceTool/Sprites/Buttons/PlayNPause.png" id="12_i8k4b"]
+[ext_resource type="Script" path="res://FaceTool/ToolSlideButton.cs" id="13_0rgr4"]
+[ext_resource type="Texture2D" uid="uid://dyjommprqlhg4" path="res://FaceTool/Sprites/Buttons/Play.png" id="13_ww527"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp47s"]
 texture = ExtResource("4_e4avi")
@@ -85,7 +87,6 @@ grow_horizontal = 2
 theme = ExtResource("1_f7vwn")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "GELACTIC FACE EDITOR"
 
 [node name="NewFile" type="Control" parent="Slides/SlideStart"]
 custom_minimum_size = Vector2(80, 80)
@@ -121,7 +122,6 @@ stretch_mode = 1
 layout_mode = 2
 theme = ExtResource("1_f7vwn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
-toggle_mode = true
 
 [node name="Texture" type="TextureRect" parent="Slides/SlideStart/NewFile/AspectRatioContainer/Button"]
 layout_mode = 1
@@ -140,7 +140,7 @@ theme = ExtResource("1_f7vwn")
 texture = ExtResource("5_nbofk")
 expand_mode = 1
 
-[node name="SaveFile" type="Control" parent="Slides/SlideStart"]
+[node name="LoadFile" type="Control" parent="Slides/SlideStart"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 1
 anchors_preset = 8
@@ -152,59 +152,6 @@ offset_left = 10.0
 offset_top = -80.0
 offset_right = 310.0
 offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(150, 0)
-mouse_filter = 2
-theme = ExtResource("1_f7vwn")
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Slides/SlideStart/SaveFile"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("1_f7vwn")
-ratio = 2.5
-stretch_mode = 1
-
-[node name="Button" type="Button" parent="Slides/SlideStart/SaveFile/AspectRatioContainer"]
-layout_mode = 2
-theme = ExtResource("1_f7vwn")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
-toggle_mode = true
-
-[node name="Texture" type="TextureRect" parent="Slides/SlideStart/SaveFile/AspectRatioContainer/Button"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -40.0
-offset_right = 40.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_f7vwn")
-texture = ExtResource("6_gucja")
-expand_mode = 1
-
-[node name="LoadFile" type="Control" parent="Slides/SlideStart"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = 60.0
-offset_right = 150.0
-offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(150, 0)
@@ -227,9 +174,60 @@ stretch_mode = 1
 layout_mode = 2
 theme = ExtResource("1_f7vwn")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
-toggle_mode = true
 
 [node name="Texture" type="TextureRect" parent="Slides/SlideStart/LoadFile/AspectRatioContainer/Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f7vwn")
+texture = ExtResource("6_polen")
+expand_mode = 1
+
+[node name="SaveFile" type="Control" parent="Slides/SlideStart"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = 60.0
+offset_right = 150.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 0)
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Slides/SlideStart/SaveFile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_f7vwn")
+ratio = 2.5
+stretch_mode = 1
+
+[node name="Button" type="Button" parent="Slides/SlideStart/SaveFile/AspectRatioContainer"]
+layout_mode = 2
+theme = ExtResource("1_f7vwn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp47s")
+
+[node name="Texture" type="TextureRect" parent="Slides/SlideStart/SaveFile/AspectRatioContainer/Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -299,10 +297,10 @@ grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 theme = ExtResource("1_f7vwn")
 texture_normal = ExtResource("4_50qf4")
-texture_pressed = ExtResource("4_sujk4")
-texture_hover = ExtResource("5_m3vx3")
 stretch_mode = 0
 flip_h = true
+script = ExtResource("13_0rgr4")
+textures = Array[CompressedTexture2D]([ExtResource("12_i8k4b"), ExtResource("13_ww527"), ExtResource("5_nbofk")])
 
 [node name="LineEdit" type="LineEdit" parent="TopBar"]
 layout_mode = 1
@@ -349,12 +347,14 @@ scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(100, 0)
 theme = ExtResource("1_f7vwn")
 texture_normal = ExtResource("4_50qf4")
-texture_pressed = ExtResource("4_sujk4")
-texture_hover = ExtResource("5_m3vx3")
 stretch_mode = 0
+script = ExtResource("13_0rgr4")
+textures = Array[CompressedTexture2D]([ExtResource("4_50qf4"), ExtResource("12_i8k4b"), ExtResource("6_gucja")])
 
+[connection signal="OnSlideChange" from="Slides" to="TopBar/Previous" method="OnSlideChanged"]
+[connection signal="OnSlideChange" from="Slides" to="TopBar/Next" method="OnSlideChanged"]
 [connection signal="pressed" from="Slides/SlideStart/NewFile/AspectRatioContainer/Button" to="." method="NewFile"]
-[connection signal="pressed" from="Slides/SlideStart/SaveFile/AspectRatioContainer/Button" to="." method="SaveFile"]
 [connection signal="pressed" from="Slides/SlideStart/LoadFile/AspectRatioContainer/Button" to="." method="LoadFile"]
+[connection signal="pressed" from="Slides/SlideStart/SaveFile/AspectRatioContainer/Button" to="." method="SaveFile"]
 [connection signal="pressed" from="TopBar/Previous" to="." method="PreviousSlide"]
 [connection signal="pressed" from="TopBar/Next" to="." method="NextSlide"]

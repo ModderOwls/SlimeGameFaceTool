@@ -2,7 +2,7 @@ using Godot;
 using System;
 using FaceFiles;
 
-public partial class ToolBehaviour : Node
+public partial class ToolLimbBehaviour : Node
 {
 	[Export] OptionButton optionButton;
 	BehaviourType behaviour;

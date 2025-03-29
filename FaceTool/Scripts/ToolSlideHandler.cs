@@ -5,19 +5,25 @@ using System;
 public partial class ToolSlideHandler : Control
 {
 	[Export] int current;
+
+
 	
 	public void NextSlide()
 	{
 		current = (current + 1) % GetChildCount();
 
 		UpdateSlides();
+
+		EmitSignal("OnSlideChange", current);
 	}
 
 	public void PreviousSlide()
 	{
-		current = (current - 2) % GetChildCount() + 1; 
+		if (current - 1 >= 0) current--;
 
 		UpdateSlides();
+
+		EmitSignal("OnSlideChange", current);
 	}
 
 	void UpdateSlides()
@@ -27,7 +33,22 @@ public partial class ToolSlideHandler : Control
 		{
 			Control node = GetChild(i) as Control;
 
-			node.Visible = i == current;
+			if (i == current)
+			{
+				node.Visible = true;
+
+				if (node.HasMethod("OnSlideChange"))
+				{
+					node.Call("OnSlideChange");
+				}
+			}
+			else
+			{
+				node.Visible = false;
+			}
 		}
 	}
+
+	[Signal]
+	public delegate void OnSlideChangeEventHandler(int slideIndex);
 }

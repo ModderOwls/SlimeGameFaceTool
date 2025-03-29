@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-//Mostly used to call up using signals and call down.
+//Mostly used to call up using signals and then call down.
 //Follows Godot's 'signal up, call down' principal to help loose couplings.
 public partial class ToolAnimationSlide : HSplitContainer
 {

@@ -2,7 +2,7 @@ using Godot;
 using System;
 using FaceFiles;
 
-public partial class ToolOffset : VBoxContainer
+public partial class ToolLimbOffset : VBoxContainer
 {
 	Vector2 offset;
 
