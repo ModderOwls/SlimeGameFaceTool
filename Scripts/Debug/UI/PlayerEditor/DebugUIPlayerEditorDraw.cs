@@ -77,12 +77,14 @@ public partial class DebugUIPlayerEditorDraw : Control
 
 		if (_raysToggled)
 		{
+			#if DEBUG
 			foreach (DrawRay ray in editor.player.drawRays)
 			{
 				Color rayColor = ray.color;
 				rayColor.A = colorsPhysicsOpacity;
 				DrawLine(editor.mainUI.GetScreenPosition(ray.from), editor.mainUI.GetScreenPosition(ray.to), rayColor, raySize);
 			}
+			#endif
 		}
     }
 }
