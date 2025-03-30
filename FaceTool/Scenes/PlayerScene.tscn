@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://jddo3p623drh"]
 
 [ext_resource type="Script" path="res://FaceTool/Scripts/Game/ToolPlayerManagement.cs" id="1_jfmy8"]
-[ext_resource type="PackedScene" uid="uid://dqmrn0opl7r6l" path="res://Scenes/Player/PlayerDefault.scn" id="2_saoob"]
+[ext_resource type="PackedScene" uid="uid://dqmrn0opl7r6l" path="res://Game/Scenes/Player/PlayerDefault.scn" id="2_saoob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2o1t6"]
 size = Vector2(588, 230)
