@@ -32,7 +32,7 @@ public partial class ToolFaces : Control
 	{
 		faceFileInstance.Reset();
 
-		GetTree().ReloadCurrentScene();
+		faceFileInstance.RequestLoad();
 	}
 
 	public void OpenSaveDialog()
