@@ -33,6 +33,7 @@ public partial class ToolFaces : Control
 		faceFileInstance.Reset();
 
 		faceFileInstance.RequestLoad();
+		faceFileInstance.RequestRefresh();
 	}
 
 	public void OpenSaveDialog()

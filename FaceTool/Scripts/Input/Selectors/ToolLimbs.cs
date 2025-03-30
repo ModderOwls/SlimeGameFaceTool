@@ -50,6 +50,8 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
         faceFileInstance.limbs.Add(new LimbData());
 
         UpdateFileGhost(data.index, data.ghost);
+		
+		faceFileInstance.RequestRefresh();
 
         return data;
     }

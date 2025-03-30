@@ -44,5 +44,7 @@ public partial class ToolLimbBehaviour : Node
 		if (data == null) return;
 
 		data.behaviour = behaviour;
+		
+		faceFileInstance.RequestRefresh();
 	}
 }

@@ -51,6 +51,8 @@ public partial class ToolLimbOffset : VBoxContainer
 		if (data == null) return;
 		
 		data.offset = offset;
+		
+		faceFileInstance.RequestRefresh();
 	}
 
 	public void Load()
