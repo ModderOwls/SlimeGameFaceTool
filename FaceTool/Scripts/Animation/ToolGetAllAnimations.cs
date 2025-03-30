@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+//Gets all animations at the desired path using reflection.
 public partial class ToolGetAllAnimations : Tree
 {
     [Export] Node AnimatorNode;

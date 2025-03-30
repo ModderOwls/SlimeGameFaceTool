@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6slq5sn8fe6p"
-path="res://.godot/imported/the-swags-are-so-beautiful-this-time-of-year-v0-kmd4ruspn2pe1.webp-8002127458b2d7ecc5784ec0c314bed3.ctex"
+uid="uid://d1vfutv11ss4b"
+path="res://.godot/imported/Selector.png-27581381f30f08992e0b26a215bc77bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Scenes/the-swags-are-so-beautiful-this-time-of-year-v0-kmd4ruspn2pe1.webp"
-dest_files=["res://.godot/imported/the-swags-are-so-beautiful-this-time-of-year-v0-kmd4ruspn2pe1.webp-8002127458b2d7ecc5784ec0c314bed3.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/Selection/Selector.png"
+dest_files=["res://.godot/imported/Selector.png-27581381f30f08992e0b26a215bc77bb.ctex"]
 
 [params]
 

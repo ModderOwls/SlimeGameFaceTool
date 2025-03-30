@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using FaceFiles;
+using System.Data;
 
+//Manages limbs in general. Things like selected limb, ghost of the limb, adding or removing, etc.
 public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
 {
     ToolFaceFile faceFileInstance;
@@ -26,6 +28,7 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
         faceFileInstance = ToolFaceFile.Instance;
 
         faceFileInstance.ConnectRefresh(this);
+        faceFileInstance.ConnectLoad(this);
     }
 
     public override void Select(Control node)
@@ -39,9 +42,27 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
     {
         ToolLimbData data = base.AddPrefab() as ToolLimbData;
 
+        data.ghost = (GhostType)(((int)data.ghost + 1) % Enum.GetValues(typeof(GhostType)).Length);
+        data.ghostButton.SelfModulate = ToolFaceFile.colorsGhosts[(int)data.ghost];
+
         data.index = allData.Count - 1;
 
         faceFileInstance.limbs.Add(new LimbData());
+
+        UpdateFileGhost(data.index, data.ghost);
+
+        return data;
+    }
+
+    public Control AddPrefabLoad()
+    {
+        ToolLimbData data = base.AddPrefab() as ToolLimbData;
+
+        data.index = allData.Count - 1;
+
+        //Add correct color to ghost button.
+        data.ghost = faceFileInstance.limbs[data.index].ghost;
+        data.ghostButton.SelfModulate = ToolFaceFile.colorsGhosts[(int)data.ghost];
 
         return data;
     }
@@ -61,6 +82,17 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
         data.Dispose();
     }
 
+    public void RemovePrefabAtNoUpdate(int index)
+    {
+        base.RemovePrefabAt(index);
+
+        //Update all after to have the correct index.
+        for (int i = index; i < allData.Count; ++i)
+        {
+            allData[i].index--;
+        }
+    }
+
     public void PressedGhost(ToolLimbData data)
     {
         //Resets ghost index if reaching max GhostColors length.
@@ -69,6 +101,8 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
         data.ghostButton.SelfModulate = ToolFaceFile.colorsGhosts[(int)data.ghost];
 
         UpdateFileGhost(data.index, data.ghost);
+
+        faceFileInstance.RequestRefresh();
     }
 
     public void Delete()
@@ -78,6 +112,14 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
         RemovePrefabAt(current);
 
         faceFileInstance.RequestRefresh();
+    }
+
+    public void Clear()
+    {
+        while (allData.Count != 0)
+        {
+            RemovePrefabAtNoUpdate(0);
+        }
     }
 
     void UpdateFileCurrentLimb()
@@ -108,6 +150,16 @@ public partial class ToolLimbs : ToolDataSelectionHandler<ToolLimbData>
             {
                 allData[i].textureRect.Texture = null;
             }
+        }
+    }
+
+    public void Load()
+    {
+        Clear();
+
+        for (int i = 0; i < faceFileInstance.limbs.Count; ++i)
+        {
+            AddPrefabLoad();
         }
     }
 }

@@ -7,8 +7,6 @@ public partial class PlayerFaceLimbDefault : PlayerFaceLimb
 {
 	[ExportSubgroup("Values")]
 
-	[Export] public Vector2 multiplier = Vector2.One;
-
 	[Export] public bool flipOnSide;
 
 	bool finishedInitialization;
@@ -20,7 +18,7 @@ public partial class PlayerFaceLimbDefault : PlayerFaceLimb
 			SetProcess(false);
 			SetPhysicsProcess(false);
 
-			GD.PrintErr("You have no ghost assigned to a LimbDefault. Either add/connect one or pick a different limb type.");
+			//GD.PrintErr("You have no ghost assigned to a LimbDefault. Either add/connect one or pick a different limb type.");
 		}
     }
 
@@ -77,6 +75,11 @@ public partial class PlayerFaceLimbDefault : PlayerFaceLimb
 
     public override void ChangeEmotion(Emotion emotion)
 	{
+		if (emotions[(int)emotion] != null)
+		{
+			emotions[(int)emotion].OnRemove();
+		}
+
 		this.emotion = emotion;
 
 		emotions[(int)emotion].OnSet(glance);

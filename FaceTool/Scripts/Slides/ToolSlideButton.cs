@@ -30,7 +30,7 @@ public partial class ToolSlideButton : TextureButton
 
 	void PressDown()
 	{
-		Modulate = new Color(1, 1, 1, 1);
+		Modulate = new Color(0.8f, 0.8f, 0.8f, 1);
 	}
 
 	void PressUp()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxt0gqbv3i6y2"]
 
-[ext_resource type="Script" path="res://FaceTool/Scripts/Data/SpriteSelectionData.cs" id="1_cuiwo"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Input/Data/SpriteSelectionData.cs" id="1_cuiwo"]
 [ext_resource type="Texture2D" uid="uid://cne84ke1rcf5h" path="res://FaceTool/Sprites/Buttons/SpriteItem.png" id="2_bf7cr"]
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="2_me2hk"]
 

@@ -67,10 +67,13 @@ public partial class ToolSpriteSelection : ToolDataSelectionHandler<SpriteSelect
         if (data == null) return;
 
         data.images[index] = image;
+
+        faceFileInstance.RequestRefresh();
     }
 
     public void Refresh(bool isEmpty)
     {
+        //If there aren't any limbs added, remove visibility.
         if (faceFileInstance.GetLimbData(0) == null)
         {
             Visible = false;

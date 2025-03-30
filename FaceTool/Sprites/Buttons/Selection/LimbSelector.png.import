@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hhait8tvlbkd"
-path="res://.godot/imported/SelectorBackground.png-2420f507ab30cdc97c87e5fb450d903e.ctex"
+uid="uid://ddqjcckifrqfu"
+path="res://.godot/imported/LimbSelector.png-430ca4774c4c64c211b4b75296941fe7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/Selection/SelectorBackground.png"
-dest_files=["res://.godot/imported/SelectorBackground.png-2420f507ab30cdc97c87e5fb450d903e.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/Selection/LimbSelector.png"
+dest_files=["res://.godot/imported/LimbSelector.png-430ca4774c4c64c211b4b75296941fe7.ctex"]
 
 [params]
 

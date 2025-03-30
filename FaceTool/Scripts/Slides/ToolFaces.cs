@@ -2,9 +2,13 @@ using Godot;
 using System;
 using FaceFiles;
 
+//Topmost script, mostly just for handling the main menu and saving/loading.
 public partial class ToolFaces : Control
 {
 	ToolFaceFile faceFileInstance;
+
+	[Export] FileDialog saveDialog;
+	[Export] FileDialog loadDialog;
 
     public override void _Ready()
     {
@@ -31,14 +35,32 @@ public partial class ToolFaces : Control
 		GetTree().ReloadCurrentScene();
 	}
 
-	public void SaveFile()
+	public void OpenSaveDialog()
 	{
-
+		//Ensure load dialog isnt already open.
+		if (!loadDialog.Visible)
+		{
+			saveDialog.Visible = true;
+		}
 	}
 
-	public void LoadFile()
+	public void OpenLoadDialog()
 	{
-		
+		//Ensure save dialog isnt already open.
+		if (!saveDialog.Visible)
+		{
+			loadDialog.Visible = true;
+		}
+	}
+
+	public void SaveFile(string path)
+	{
+		faceFileInstance.SaveToJSON(path);
+	}
+
+	public void LoadFile(string path)
+	{
+		faceFileInstance.LoadFromJSON(path);
 	}
 
 

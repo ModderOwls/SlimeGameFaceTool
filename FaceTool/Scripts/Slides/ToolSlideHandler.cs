@@ -7,6 +7,11 @@ public partial class ToolSlideHandler : Control
 	[Export] int current;
 
 
+    public override void _Ready()
+    {
+		EmitSignal("OnSlideChange", current);
+    }
+
 	
 	public void NextSlide()
 	{

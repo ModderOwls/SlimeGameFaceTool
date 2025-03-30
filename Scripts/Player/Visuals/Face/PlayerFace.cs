@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Transactions;
 
@@ -46,6 +47,8 @@ public partial class PlayerFace : Node2D
 	[ExportGroup("References")]
 
 	[Export] public Node2D target;
+
+	[Export] public Node limbsParent;
 
 	[Export] public PlayerFaceLimb[] playerLimbs;
 	[Export] public PlayerFaceGhost[] playerGhosts;
@@ -187,6 +190,28 @@ public partial class PlayerFace : Node2D
 		}
 	}
 
+	//Automatically gets limbs.
+	public void GetLimbs()
+	{
+		List<PlayerFaceLimb> newLimbs = new List<PlayerFaceLimb>();
+
+		foreach (Node child in limbsParent.GetChildren())
+		{
+			PlayerFaceLimb limb = child as PlayerFaceLimb;
+
+			if (limb == null)
+			{
+				GD.PrintErr("One of Player Face's attached limb nodes ('" + child.Name + "') does not have a PlayerFaceLimb script attached!");
+
+				return;
+			}
+
+			newLimbs.Add(limb);
+		}
+
+		playerLimbs = newLimbs.ToArray();
+	}
+
 #endregion
 
 
@@ -263,7 +288,7 @@ public partial class PlayerFace : Node2D
 		for (int i = 0; i < playerGhosts.Length; ++i)
 		{
 			playerGhosts[i].Position = chaseGhostFrom[i].Lerp(
-				new Vector2(followGhostPositions[i].X * -signDirection, followGhostPositions[i].Y), 
+				new Vector2(followGhostPositions[i].X * -signDirection, followGhostPositions[i].Y),
 				(chaseTime-chaseTimer)/chaseTime
 			);
 		}

@@ -23,8 +23,5 @@ public partial class ToolLimbData : Control
 	{		
 		button.Connect("pressed", Callable.From(() => connectTo.Call("Select", this)));
 		ghostButton.Connect("pressed", Callable.From(() => connectTo.Call("PressedGhost", this)));
-
-		//Update Ghost button first.
-		connectTo.Call("PressedGhost", this);
 	}
 }

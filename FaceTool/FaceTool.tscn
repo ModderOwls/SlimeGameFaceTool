@@ -1,19 +1,19 @@
-[gd_scene load_steps=17 format=3 uid="uid://5g1jpk5ofm5m"]
+[gd_scene load_steps=19 format=3 uid="uid://5g1jpk5ofm5m"]
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_f7vwn"]
-[ext_resource type="Script" path="res://FaceTool/Scripts/ToolFaces.cs" id="2_tvx7b"]
-[ext_resource type="Texture2D" uid="uid://cs01jkqfhtpfr" path="res://FaceTool/Sprites/Buttons/StartMenu/ArrowNext.png" id="4_50qf4"]
-[ext_resource type="Texture2D" uid="uid://hhait8tvlbkd" path="res://FaceTool/Sprites/Selection/SelectorBackground.png" id="4_e4avi"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Slides/ToolFaces.cs" id="2_tvx7b"]
+[ext_resource type="Texture2D" uid="uid://hhait8tvlbkd" path="res://FaceTool/Sprites/Buttons/Selection/SelectorBackground.png" id="4_e4avi"]
 [ext_resource type="Texture2D" uid="uid://b8ax4rsx5qt26" path="res://FaceTool/Sprites/Buttons/StartMenu/New.png" id="5_nbofk"]
-[ext_resource type="Script" path="res://FaceTool/Scripts/ToolSlideHandler.cs" id="5_wkn57"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Slides/ToolSlideHandler.cs" id="5_wkn57"]
 [ext_resource type="Texture2D" uid="uid://c3iqw34thmght" path="res://FaceTool/Sprites/Buttons/StartMenu/Save.png" id="6_gucja"]
 [ext_resource type="Texture2D" uid="uid://bqc7e4aub66ih" path="res://FaceTool/Sprites/Buttons/StartMenu/Load.png" id="6_polen"]
-[ext_resource type="Script" path="res://FaceTool/ToolSetName.cs" id="6_sy4so"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Input/ToolSetName.cs" id="6_sy4so"]
 [ext_resource type="PackedScene" uid="uid://0ctk6aqu5pg5" path="res://FaceTool/Scenes/Slides/SlideFace.tscn" id="6_ux0nh"]
 [ext_resource type="PackedScene" uid="uid://d2s5p52dq28au" path="res://FaceTool/Scenes/Slides/SlideAnimation.tscn" id="7_7vfth"]
-[ext_resource type="Texture2D" uid="uid://cm4s1tlx1vwjt" path="res://FaceTool/Sprites/Buttons/PlayNPause.png" id="12_i8k4b"]
-[ext_resource type="Script" path="res://FaceTool/ToolSlideButton.cs" id="13_0rgr4"]
-[ext_resource type="Texture2D" uid="uid://dyjommprqlhg4" path="res://FaceTool/Sprites/Buttons/Play.png" id="13_ww527"]
+[ext_resource type="Texture2D" uid="uid://cwdanvknrurl5" path="res://FaceTool/Sprites/Buttons/Home.png" id="10_c7wb5"]
+[ext_resource type="Texture2D" uid="uid://dlb0l0pgd6821" path="res://FaceTool/Sprites/Buttons/Edit.png" id="12_2nk45"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Slides/ToolSlideButton.cs" id="13_0rgr4"]
+[ext_resource type="Texture2D" uid="uid://c6sijwwrfq6tg" path="res://FaceTool/Sprites/Buttons/Animations.png" id="14_gj21e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp47s"]
 texture = ExtResource("4_e4avi")
@@ -22,9 +22,13 @@ texture_margin_top = 15.0
 texture_margin_right = 15.0
 texture_margin_bottom = 15.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sxi0q"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h6bb4"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dskd6"]
 
-[node name="FaceTool" type="Control" node_paths=PackedStringArray("slideHandler")]
+[node name="FaceTool" type="Control" node_paths=PackedStringArray("saveDialog", "loadDialog", "slideHandler")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,6 +38,8 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_f7vwn")
 script = ExtResource("2_tvx7b")
+saveDialog = NodePath("Slides/SlideStart/SaveDialog")
+loadDialog = NodePath("Slides/SlideStart/LoadDialog")
 slideHandler = NodePath("Slides")
 
 [node name="Color" type="ColorRect" parent="."]
@@ -244,6 +250,28 @@ theme = ExtResource("1_f7vwn")
 texture = ExtResource("6_gucja")
 expand_mode = 1
 
+[node name="LoadDialog" type="FileDialog" parent="Slides/SlideStart"]
+disable_3d = true
+title = "Open a File"
+initial_position = 1
+size = Vector2i(500, 450)
+theme_override_icons/toggle_hidden = SubResource("CompressedTexture2D_sxi0q")
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.face")
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="Slides/SlideStart"]
+disable_3d = true
+initial_position = 1
+size = Vector2i(500, 450)
+theme_override_icons/toggle_hidden = SubResource("CompressedTexture2D_h6bb4")
+ok_button_text = "Save"
+access = 1
+filters = PackedStringArray("*.face")
+use_native_dialog = true
+
 [node name="SlideFace" parent="Slides" instance=ExtResource("6_ux0nh")]
 visible = false
 layout_mode = 1
@@ -296,11 +324,10 @@ offset_bottom = 70.0
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 theme = ExtResource("1_f7vwn")
-texture_normal = ExtResource("4_50qf4")
+texture_normal = ExtResource("10_c7wb5")
 stretch_mode = 0
-flip_h = true
 script = ExtResource("13_0rgr4")
-textures = Array[CompressedTexture2D]([ExtResource("12_i8k4b"), ExtResource("13_ww527"), ExtResource("5_nbofk")])
+textures = Array[CompressedTexture2D]([null, ExtResource("10_c7wb5"), ExtResource("12_2nk45")])
 
 [node name="LineEdit" type="LineEdit" parent="TopBar"]
 layout_mode = 1
@@ -309,9 +336,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 100.0
-offset_top = -29.0
+offset_top = -31.0
 offset_right = -100.0
-offset_bottom = 29.0
+offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_f7vwn")
@@ -337,24 +364,26 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -110.0
+offset_left = -116.0
 offset_top = -30.0
-offset_right = -14.0
+offset_right = -20.0
 offset_bottom = 66.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(100, 0)
+pivot_offset = Vector2(96, 0)
 theme = ExtResource("1_f7vwn")
-texture_normal = ExtResource("4_50qf4")
+texture_normal = ExtResource("12_2nk45")
 stretch_mode = 0
 script = ExtResource("13_0rgr4")
-textures = Array[CompressedTexture2D]([ExtResource("4_50qf4"), ExtResource("12_i8k4b"), ExtResource("6_gucja")])
+textures = Array[CompressedTexture2D]([ExtResource("12_2nk45"), ExtResource("14_gj21e"), ExtResource("6_gucja")])
 
 [connection signal="OnSlideChange" from="Slides" to="TopBar/Previous" method="OnSlideChanged"]
 [connection signal="OnSlideChange" from="Slides" to="TopBar/Next" method="OnSlideChanged"]
 [connection signal="pressed" from="Slides/SlideStart/NewFile/AspectRatioContainer/Button" to="." method="NewFile"]
-[connection signal="pressed" from="Slides/SlideStart/LoadFile/AspectRatioContainer/Button" to="." method="LoadFile"]
-[connection signal="pressed" from="Slides/SlideStart/SaveFile/AspectRatioContainer/Button" to="." method="SaveFile"]
+[connection signal="pressed" from="Slides/SlideStart/LoadFile/AspectRatioContainer/Button" to="." method="OpenLoadDialog"]
+[connection signal="pressed" from="Slides/SlideStart/SaveFile/AspectRatioContainer/Button" to="." method="OpenSaveDialog"]
+[connection signal="file_selected" from="Slides/SlideStart/LoadDialog" to="." method="LoadFile"]
+[connection signal="file_selected" from="Slides/SlideStart/SaveDialog" to="." method="SaveFile"]
 [connection signal="pressed" from="TopBar/Previous" to="." method="PreviousSlide"]
 [connection signal="pressed" from="TopBar/Next" to="." method="NextSlide"]

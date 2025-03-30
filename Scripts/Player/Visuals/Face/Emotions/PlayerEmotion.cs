@@ -5,9 +5,12 @@ public abstract partial class PlayerEmotion : Resource
 {
     public PlayerFaceLimb limb;
 
-    [Export] public CompressedTexture2D sprite { get; set; }
-    [Export] public Vector2 spriteSize { get; set; }
+    [Export] public Texture2D sprite { get; set; }
+    [Export] public Vector2[] spritePositions { get; set; } = new Vector2[3];
+    [Export] public Vector2[] spriteSizes { get; set; } = new Vector2[3];
     [Export] public Vector2 spriteOffset { get; set; }
+
+    protected int glance;
 
     public virtual void Initialize(PlayerFaceLimb limb)
     {
@@ -39,10 +42,13 @@ public abstract partial class PlayerEmotion : Resource
     /// <param name="direction"></param>
     public virtual void OnChangeGlance(float direction)
     {
-        int intDirection = Mathf.RoundToInt(direction);
+        glance = Mathf.RoundToInt(direction);
+
+        int appliedGlance = ApplyGlance(glance);
 
         Rect2 newRect = limb.RegionRect;
-        newRect.Position = new Vector2(newRect.Position.X, ApplyGlance(intDirection) * newRect.Size.Y);
+        newRect.Position = spritePositions[appliedGlance];
+        newRect.Size = spriteSizes[appliedGlance];
         limb.RegionRect = newRect;
     }
 

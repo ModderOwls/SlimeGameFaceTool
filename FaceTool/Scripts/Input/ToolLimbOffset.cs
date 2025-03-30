@@ -17,6 +17,7 @@ public partial class ToolLimbOffset : VBoxContainer
 		faceFileInstance = ToolFaceFile.Instance;
 
 		faceFileInstance.ConnectRefresh(this);
+		//faceFileInstance.ConnectLoad(this);
     }
 
     public void Refresh(bool isEmpty)
@@ -50,5 +51,15 @@ public partial class ToolLimbOffset : VBoxContainer
 		if (data == null) return;
 		
 		data.offset = offset;
+	}
+
+	public void Load()
+	{
+		EmotionData data = faceFileInstance.GetCurrentEmotionData();
+
+		if (data == null) return;
+
+		spinOffsetX.SetValueNoSignal(data.offset.X);
+		spinOffsetY.SetValueNoSignal(data.offset.Y);
 	}
 }

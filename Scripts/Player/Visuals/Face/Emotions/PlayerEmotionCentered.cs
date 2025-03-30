@@ -9,13 +9,13 @@ public partial class PlayerEmotionCentered : PlayerEmotion
     (
         "The frames for the distance of the limb. 1: Normal sprite, 2: 1 extra frame for abs(x) = 1, etc."
     ) ]
-    [Export] public int frames = 1;
+    [Export] public int frames = 2;
 
     int lastPosAbsX;
 
     public override void Update()
     {
-        //If its the same pixel position as last frame update. 
+        //Check if its the same pixel position as last frame update. 
         int posAbsX = Mathf.Abs(limb.intPosition.X);
         if (posAbsX == lastPosAbsX) return;
 
@@ -23,9 +23,11 @@ public partial class PlayerEmotionCentered : PlayerEmotion
         
         lastPosAbsX = posAbsX;
 
+        int newSpriteIndex = ApplyGlance(glance) * frames + posAbsX;
         Rect2 newRect = limb.RegionRect;
 
-        newRect.Position = new Vector2(posAbsX * spriteSize.X, newRect.Position.Y);
+        newRect.Position = spritePositions[newSpriteIndex];
+        newRect.Size = spriteSizes[newSpriteIndex];
 
         limb.RegionRect = newRect;
     }

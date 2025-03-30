@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cyyj17isqirf4"]
 
 [ext_resource type="Theme" uid="uid://uspx3l5exnj" path="res://FaceTool/ThemeFaceTool.tres" id="1_nkavx"]
-[ext_resource type="Script" path="res://FaceTool/Scripts/Data/ToolLimbData.cs" id="2_1ir41"]
+[ext_resource type="Script" path="res://FaceTool/Scripts/Input/Data/ToolLimbData.cs" id="2_5i7a6"]
 [ext_resource type="Texture2D" uid="uid://crfp71hw15vh8" path="res://FaceTool/Sprites/LimbGhost/LimbButton.png" id="3_6ivap"]
 [ext_resource type="Texture2D" uid="uid://b5awjy8hq82cx" path="res://FaceTool/Sprites/LimbGhost/LimbButtonPressed.png" id="4_pwtq4"]
 [ext_resource type="Texture2D" uid="uid://bmrtavec6k4ew" path="res://FaceTool/Sprites/LimbGhost/LimbButtonHover.png" id="5_7cu12"]
@@ -14,7 +14,7 @@ offset_right = 80.0
 offset_bottom = 80.0
 mouse_filter = 2
 theme = ExtResource("1_nkavx")
-script = ExtResource("2_1ir41")
+script = ExtResource("2_5i7a6")
 button = NodePath("AspectRatioContainer/LimbImage")
 textureRect = NodePath("AspectRatioContainer/LimbImage/Texture")
 ghostButton = NodePath("GhostButton")

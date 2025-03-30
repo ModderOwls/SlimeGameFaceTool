@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1bwsnfy156e3"
-path="res://.godot/imported/TreeSelector.png-88ce3a2b65ff4c6414ea4272fc2c9746.ctex"
+uid="uid://hhait8tvlbkd"
+path="res://.godot/imported/SelectorBackground.png-4c92da15cfe35aa4275c67e16433fd8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FaceTool/Sprites/Selection/TreeSelector.png"
-dest_files=["res://.godot/imported/TreeSelector.png-88ce3a2b65ff4c6414ea4272fc2c9746.ctex"]
+source_file="res://FaceTool/Sprites/Buttons/Selection/SelectorBackground.png"
+dest_files=["res://.godot/imported/SelectorBackground.png-4c92da15cfe35aa4275c67e16433fd8e.ctex"]
 
 [params]
 

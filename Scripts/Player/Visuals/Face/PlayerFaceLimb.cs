@@ -8,6 +8,8 @@ public abstract partial class PlayerFaceLimb : Sprite2D
 	public Vector2 truePosition;
 	public Vector2I intPosition;
 
+	[Export] public Vector2 multiplier = Vector2.One;
+
 	
 	[ExportSubgroup("Emotions")]
 

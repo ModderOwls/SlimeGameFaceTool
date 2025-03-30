@@ -2,6 +2,7 @@ using Godot;
 using System;
 using FaceFiles;
 
+//Manages emotions in general. Gets all possible emotions using reflection.
 public partial class ToolEmotions : ToolSelectionHandler
 {
     ToolFaceFile faceFileInstance;
